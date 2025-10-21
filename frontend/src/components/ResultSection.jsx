@@ -12,7 +12,7 @@ export default function ResultSection({ answers }) {
     setError('');
     setPlanText('');
     try {
-      const plan = generatePlan(answers);
+      const plan = generatePlan(answers).trim();
       setTimeout(() => {
         setPlanText(plan);
         setIsLoading(false);
@@ -49,8 +49,8 @@ export default function ResultSection({ answers }) {
           </button>
         )}
         {planText && (
-          <div className="mt-10 rounded-2xl bg-white/90 p-6 text-left text-brand shadow-lg">
-            <pre className="mt-6 whitespace-pre-wrap text-sm leading-relaxed">{planText}</pre>
+          <div className="mt-10 rounded-2xl bg-white/90 px-4 py-6 text-left text-brand shadow-lg sm:px-6">
+            <pre className="mt-4 whitespace-pre-wrap text-sm leading-relaxed">{planText}</pre>
             <motion.a
               href="https://www.psychology.com.co/product-page/get-your-full-personalized-plan"
               target="_blank"

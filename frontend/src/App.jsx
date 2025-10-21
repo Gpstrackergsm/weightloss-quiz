@@ -21,7 +21,7 @@ export default function App() {
   const canProceed = step.type === 'multi' ? (answers[step.id] || []).length > 0 : Boolean(answers[step.id]);
 
   return (
-    <div className="min-h-screen px-4 py-10 md:px-12">
+    <div className="min-h-screen px-4 pt-10 pb-24 md:px-12 md:pb-10">
       <div className="mx-auto flex max-w-3xl flex-col gap-10">
         <ProgressBar value={progress} />
         <div className="flex flex-1 justify-center">
@@ -34,7 +34,7 @@ export default function App() {
             />
           </AnimatePresence>
         </div>
-        <div className="flex items-center justify-between text-white/80">
+        <div className="sticky bottom-6 z-20 flex items-center justify-between gap-4 rounded-full bg-white/10 px-4 py-3 text-white/80 backdrop-blur-sm md:static md:bg-transparent md:p-0 md:backdrop-blur-0 md:shadow-none">
           <button
             type="button"
             onClick={goBack}
