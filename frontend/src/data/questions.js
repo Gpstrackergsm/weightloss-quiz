@@ -37,6 +37,17 @@ export const quizSteps = [
     ]
   },
   {
+    id: 'activity',
+    title: 'What best describes your weekly activity level?',
+    type: 'single',
+    options: [
+      { value: 'sedentary', label: 'Mostly sitting', icon: '🪑' },
+      { value: 'light', label: 'Light movement 1-2x a week', icon: '🚶' },
+      { value: 'moderate', label: 'Workouts 3-4x a week', icon: '🏋️' },
+      { value: 'active', label: 'On my feet or training daily', icon: '⚡' }
+    ]
+  },
+  {
     id: 'veggies',
     title: 'How often do you eat veggies?',
     type: 'single',
@@ -45,6 +56,40 @@ export const quizSteps = [
       { value: 'sometimes', label: 'I eat veggies from time to time', icon: '🥗' },
       { value: 'daily', label: 'I eat veggies every day', icon: '🥦' },
       { value: 'mostly', label: 'I eat mostly veggies', icon: '🥬' }
+    ]
+  },
+  {
+    id: 'sleep',
+    title: 'How would you describe your sleep quality?',
+    type: 'single',
+    options: [
+      { value: 'restless', label: 'Restless & interrupted', icon: '🌙' },
+      { value: 'okay', label: 'Okay, but not great', icon: '😴' },
+      { value: 'solid', label: 'Pretty solid most nights', icon: '💤' },
+      { value: 'excellent', label: 'Excellent, I wake up energized', icon: '🌅' }
+    ]
+  },
+  {
+    id: 'hydration',
+    title: 'How many cups of water do you drink in a day?',
+    type: 'single',
+    options: [
+      { value: 'under-4', label: 'Under 4 cups', icon: '🥤' },
+      { value: 'four-to-six', label: '4-6 cups', icon: '💧' },
+      { value: 'seven-to-nine', label: '7-9 cups', icon: '🚰' },
+      { value: 'ten-plus', label: '10+ cups', icon: '🏞️' }
+    ]
+  },
+  {
+    id: 'cravings',
+    title: 'What cravings tend to derail you?',
+    type: 'multi',
+    options: [
+      { value: 'sugar', label: 'Sugary treats', icon: '🍰' },
+      { value: 'salty', label: 'Salty snacks', icon: '🥨' },
+      { value: 'late-night', label: 'Late-night munchies', icon: '🌜' },
+      { value: 'comfort', label: 'Comfort foods / takeout', icon: '🍕' },
+      { value: 'none', label: 'Cravings rarely throw me off', icon: '✨' }
     ]
   },
   {
