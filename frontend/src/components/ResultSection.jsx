@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { generatePlan } from '../utils/planGenerator.js';
 
@@ -50,6 +51,17 @@ export default function ResultSection({ answers }) {
             <pre className="whitespace-pre-wrap text-sm leading-relaxed">{planText}</pre>
           </div>
         )}
+        <motion.a
+          href="https://www.psychology.com.co/product-page/get-your-full-personalized-plan"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mt-12 inline-flex w-full items-center justify-center rounded-lg bg-[#00796B] px-6 py-3 font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-[#005C52] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent sm:w-auto"
+        >
+          Get My Full Personalized Plan (PDF) – $9
+        </motion.a>
       </div>
     </div>
   );
