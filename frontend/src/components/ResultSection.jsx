@@ -1,11 +1,7 @@
 import { useState } from 'react';
 
 const rawBaseUrl = import.meta.env.VITE_API_BASE_URL ? import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '') : '';
-const API_BASE_URL = rawBaseUrl
-  ? rawBaseUrl.endsWith('/api')
-    ? rawBaseUrl
-    : `${rawBaseUrl}/api`
-  : '/api';
+const API_BASE_URL = rawBaseUrl || '/api';
 
 export default function ResultSection({ answers }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +11,11 @@ export default function ResultSection({ answers }) {
     setIsLoading(true);
     setError('');
     try {
-      const response = await fetch(`${API_BASE_URL}/generate-report`, {
+      const endpoint = API_BASE_URL.endsWith('/generate-report')
+        ? API_BASE_URL
+        : `${API_BASE_URL}/generate-report`;
+
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ answers })
