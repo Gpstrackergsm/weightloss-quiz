@@ -6,10 +6,12 @@ const API_BASE_URL = rawBaseUrl || '/api';
 export default function ResultSection({ answers }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [planText, setPlanText] = useState('');
 
   const handleGenerate = async () => {
     setIsLoading(true);
     setError('');
+    setPlanText('');
     try {
       const endpoint = API_BASE_URL.endsWith('/generate-report')
         ? API_BASE_URL
@@ -25,15 +27,8 @@ export default function ResultSection({ answers }) {
         throw new Error('Unable to generate plan at the moment.');
       }
 
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'personalized-weight-loss-plan.pdf';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      window.URL.revokeObjectURL(url);
+      const data = await response.json();
+      setPlanText(data.plan || '');
     } catch (err) {
       setError(err.message || 'Something went wrong.');
     } finally {
@@ -62,8 +57,13 @@ export default function ResultSection({ answers }) {
           disabled={isLoading}
           className="mt-10 inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-lg font-semibold text-brand transition hover:bg-white/80 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {isLoading ? 'Generating...' : 'Generate My Personalized Plan (PDF)'}
+          {isLoading ? 'Generating...' : 'Generate My Personalized Plan'}
         </button>
+        {planText && (
+          <div className="mt-10 rounded-2xl bg-white/90 p-6 text-left text-brand shadow-lg">
+            <pre className="whitespace-pre-wrap text-sm leading-relaxed">{planText}</pre>
+          </div>
+        )}
       </div>
     </div>
   );
