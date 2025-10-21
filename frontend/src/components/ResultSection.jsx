@@ -48,20 +48,20 @@ export default function ResultSection({ answers }) {
         </button>
         {planText && (
           <div className="mt-10 rounded-2xl bg-white/90 p-6 text-left text-brand shadow-lg">
-            <pre className="whitespace-pre-wrap text-sm leading-relaxed">{planText}</pre>
+            <motion.a
+              href="https://www.psychology.com.co/product-page/get-your-full-personalized-plan"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="inline-flex items-center justify-center rounded-full bg-[#00796B] px-5 py-2 text-sm font-semibold uppercase tracking-wide text-white shadow-md transition-colors duration-200 hover:bg-[#005C52] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#005C52]/70 focus-visible:ring-offset-2"
+            >
+              Explore My Full Personalized Plan
+            </motion.a>
+            <pre className="mt-6 whitespace-pre-wrap text-sm leading-relaxed">{planText}</pre>
           </div>
         )}
-        <motion.a
-          href="https://www.psychology.com.co/product-page/get-your-full-personalized-plan"
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mt-12 inline-flex w-full items-center justify-center rounded-lg bg-[#00796B] px-6 py-3 font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-[#005C52] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent sm:w-auto"
-        >
-          Get My Full Personalized Plan (PDF) – $9
-        </motion.a>
       </div>
     </div>
   );
