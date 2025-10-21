@@ -1,67 +1,23 @@
 import { useState } from 'react';
-
-const rawBaseUrl = import.meta.env.VITE_API_BASE_URL ? import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '') : '';
-
-function resolveEndpoint(baseUrl) {
-  const sanitized = baseUrl || '';
-
-  if (!sanitized) {
-    return '/api/generate-report';
-  }
-
-  if (sanitized.endsWith('/generate-report')) {
-    return sanitized;
-  }
-
-  try {
-    const url = new URL(sanitized);
-    if (url.pathname.endsWith('/generate-report')) {
-      return url.toString();
-    }
-
-    const segments = url.pathname.split('/').filter(Boolean);
-    const hasApiSegment = segments.includes('api');
-    const nextSegments = hasApiSegment ? [...segments, 'generate-report'] : [...segments, 'api', 'generate-report'];
-    url.pathname = `/${nextSegments.join('/')}`;
-    return url.toString();
-  } catch (error) {
-    // sanitized is likely a relative path (e.g. "/api"). Fall back to string heuristics.
-  }
-
-  if (sanitized.endsWith('/api') || sanitized.includes('/api/')) {
-    return `${sanitized}/generate-report`;
-  }
-
-  return `${sanitized}/api/generate-report`;
-}
-
-const API_ENDPOINT = resolveEndpoint(rawBaseUrl);
+import { generatePlan } from '../utils/planGenerator.js';
 
 export default function ResultSection({ answers }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [planText, setPlanText] = useState('');
 
-  const handleGenerate = async () => {
+  const handleGenerate = () => {
     setIsLoading(true);
     setError('');
     setPlanText('');
     try {
-      const response = await fetch(API_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ answers })
-      });
-
-      if (!response.ok) {
-        throw new Error('Unable to generate plan at the moment.');
-      }
-
-      const data = await response.json();
-      setPlanText(data.plan || '');
+      const plan = generatePlan(answers);
+      setTimeout(() => {
+        setPlanText(plan);
+        setIsLoading(false);
+      }, 400);
     } catch (err) {
       setError(err.message || 'Something went wrong.');
-    } finally {
       setIsLoading(false);
     }
   };
