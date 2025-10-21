@@ -2,7 +2,11 @@ const LABELS = {
   symptoms: 'Symptoms you experience',
   diets: 'Diets tried in the last year',
   fermented: 'Fermented food frequency',
+  activity: 'Weekly activity level',
   veggies: 'Vegetable frequency',
+  sleep: 'Sleep quality',
+  hydration: 'Daily hydration',
+  cravings: 'Typical cravings',
   goals: 'Your goals'
 };
 
@@ -16,6 +20,10 @@ function buildRecommendations(answers) {
   const diets = answers.diets || [];
   const fermented = answers.fermented;
   const veggies = answers.veggies;
+  const activity = answers.activity;
+  const sleep = answers.sleep;
+  const hydration = answers.hydration;
+  const cravings = answers.cravings || [];
   const goals = answers.goals || [];
 
   if (symptoms.includes('constipation')) {
@@ -36,6 +44,24 @@ function buildRecommendations(answers) {
   if (veggies === 'rarely' || veggies === 'sometimes') {
     recs.add('Aim for half of your plate to be colorful vegetables at lunch and dinner for micronutrients and fiber.');
   }
+  if (activity === 'sedentary') {
+    recs.add('Schedule two 10-minute walks after meals plus one short strength session to gently raise daily burn.');
+  }
+  if (activity === 'light') {
+    recs.add('Layer in one additional resistance-based workout or bodyweight circuit each week to build lean muscle.');
+  }
+  if (activity === 'active') {
+    recs.add('Prioritize recovery days with mobility work and protein-rich meals to support your training load.');
+  }
+  if (sleep === 'restless' || sleep === 'okay') {
+    recs.add('Create a wind-down window: dim screens 60 minutes before bed and pair magnesium-rich foods with a calming tea.');
+  }
+  if (hydration === 'under-4') {
+    recs.add('Keep a reusable bottle nearby and aim for one cup of water upon waking and before each meal.');
+  }
+  if (hydration === 'ten-plus') {
+    recs.add('Balance high water intake with electrolytes from coconut water, citrus, or a pinch of sea salt.');
+  }
   if (goals.includes('lose-weight')) {
     recs.add('Create a gentle 300–500 calorie deficit built on whole foods, lean protein, and slow-digesting carbs.');
   }
@@ -48,6 +74,18 @@ function buildRecommendations(answers) {
   if (diets.includes('fasting') || diets.includes('keto')) {
     recs.add('Balance structured eating patterns with probiotic foods and mineral-rich broths to support the microbiome.');
   }
+  if (cravings.includes('sugar')) {
+    recs.add('Plan satisfying sweet swaps such as Greek yogurt with berries and cinnamon to keep blood sugar steady.');
+  }
+  if (cravings.includes('salty')) {
+    recs.add('Batch-prep crunchy chickpeas or roasted edamame so savory cravings have a protein-rich answer.');
+  }
+  if (cravings.includes('late-night')) {
+    recs.add('Front-load meals earlier in the day and cap evenings with a protein-rich snack to curb late-night munchies.');
+  }
+  if (cravings.includes('comfort')) {
+    recs.add('Upgrade comfort meals with lighter spins—think cauliflower mash instead of fries and air-fried salmon tacos.');
+  }
 
   if (recs.size === 0) {
     recs.add('Maintain your current balanced habits while staying consistent with movement, hydration, and sleep.');
@@ -59,6 +97,8 @@ function buildRecommendations(answers) {
 function buildSampleDay(answers) {
   const fermented = answers.fermented;
   const veggies = answers.veggies;
+  const hydration = answers.hydration;
+  const activity = answers.activity;
 
   const breakfast = fermented === 'never'
     ? 'Greek yogurt parfait with berries, chia seeds, and a spoon of sauerkraut on the side to ease into fermented foods.'
@@ -70,9 +110,16 @@ function buildSampleDay(answers) {
 
   const dinner = 'Herb roasted chicken (or tempeh), garlic sautéed greens, and a side of fermented kimchi or pickles.';
   const snacks = 'Mid-morning: apple with almond butter. Afternoon: kombucha or kefir with a handful of walnuts.';
-  const movement = '20-30 minutes of brisk walking plus 10 minutes of core activation or mobility work.';
+  const movement = activity === 'active'
+    ? 'Alternate high-intensity sessions with recovery walks, mobility flows, and gentle yoga for balance.'
+    : '20-30 minutes of brisk walking plus 10 minutes of core activation or mobility work.';
+  const hydrationFocus = hydration === 'under-4'
+    ? 'Keep a 20 oz bottle nearby and finish one before lunch and another by mid-afternoon.'
+    : hydration === 'ten-plus'
+      ? 'Add citrus slices or a pinch of sea salt to one refill to keep electrolytes topped off.'
+      : 'Sip water consistently through the day and pair each caffeinated drink with a cup of water.';
 
-  return { breakfast, lunch, dinner, snacks, movement };
+  return { breakfast, lunch, dinner, snacks, movement, hydrationFocus };
 }
 
 function buildMindsetMessage(goals) {
@@ -116,6 +163,7 @@ export function generatePlan(answers = {}) {
   lines.push(`- Dinner: ${sampleDay.dinner}`);
   lines.push(`- Snacks: ${sampleDay.snacks}`);
   lines.push(`- Movement: ${sampleDay.movement}`);
+  lines.push(`- Hydration Focus: ${sampleDay.hydrationFocus}`);
   lines.push('');
 
   lines.push('Mindset & Motivation:');
