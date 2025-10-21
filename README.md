@@ -19,7 +19,17 @@ npm install
 npm run dev
 ```
 
-The Vite dev server proxies `/api/*` requests to `http://localhost:5000` during development.
+Create a `.env.local` file (or configure environment variables in Netlify) with the backend base URL so the quiz can reach the
+PDF API in production:
+
+```bash
+VITE_API_BASE_URL=https://your-backend-host.com/api
+```
+
+> The trailing `/api` portion is optional if your backend exposes the route at the root level.
+
+The Vite dev server proxies `/api/*` requests to `http://localhost:5000` during development, so you can skip setting the variable
+locally if you run both services from this repository.
 
 ### Backend
 
