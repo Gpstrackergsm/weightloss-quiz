@@ -24,8 +24,8 @@ export default function ResultSection({ answers }) {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-6 py-10">
-      <div className="max-w-2xl rounded-3xl bg-white/10 p-10 text-center shadow-2xl backdrop-blur-lg">
+    <div className="flex min-h-screen items-center justify-center px-4 py-10 sm:px-6">
+      <div className="max-w-2xl rounded-3xl bg-white/10 px-6 py-8 text-center shadow-2xl backdrop-blur-lg sm:p-10">
         <span className="text-sm uppercase tracking-[0.3em] text-white/60">Personalized Results</span>
         <h2 className="mt-4 text-4xl font-semibold text-white">We got you!</h2>
         <p className="mt-4 text-lg text-white/80">
