@@ -1,105 +1,182 @@
 export const quizSteps = [
   {
-    id: 'symptoms',
-    title: 'Do you experience any of the following symptoms?',
-    type: 'multi',
-    options: [
-      { value: 'indigestion', label: 'Indigestion / nausea', icon: '🌿' },
-      { value: 'constipation', label: 'Constipation', icon: '💧' },
-      { value: 'brain-fog', label: 'Brain fog / fatigue', icon: '🧠' },
-      { value: 'bloating', label: 'Gas / bloating', icon: '💨' },
-      { value: 'diarrhea', label: 'Diarrhea', icon: '⚡' },
-      { value: 'none', label: 'None of the above', icon: '✨' }
-    ]
-  },
-  {
-    id: 'diets',
-    title: 'What diets have you tried in the last year?',
-    type: 'multi',
-    options: [
-      { value: 'keto', label: 'Keto', icon: '🥑' },
-      { value: 'fasting', label: 'Fasting', icon: '⏱️' },
-      { value: 'paleo', label: 'Paleo', icon: '🍖' },
-      { value: 'mediterranean', label: 'Mediterranean', icon: '🌊' },
-      { value: 'dash', label: 'DASH diet', icon: '⚖️' },
-      { value: 'plant-based', label: 'Vegetarian / Vegan diet', icon: '🥕' }
-    ]
-  },
-  {
-    id: 'fermented',
-    title: 'How often do you eat fermented foods?',
+    id: 'q1',
+    sectionTitle: 'SECTION 1 — 18 (Intermittent Fasting)',
+    sectionSubtitle: 'Goal: Assess eating window & discipline',
+    title: 'Q1. How long is your usual eating window during the day?',
     type: 'single',
     options: [
-      { value: 'never', label: 'Never', icon: '🚫' },
-      { value: 'sometimes', label: 'Sometimes', icon: '🌱' },
-      { value: 'often', label: 'Often', icon: '🔥' },
-      { value: 'daily', label: 'Every day', icon: '🌞' }
+      { value: 'a', label: 'A. 6 hours or less', icon: '⏱️', score: 3 },
+      { value: 'b', label: 'B. 8–10 hours', icon: '🕗', score: 2 },
+      { value: 'c', label: 'C. 12 hours or more', icon: '🕛', score: 1 }
     ]
   },
   {
-    id: 'activity',
-    title: 'What best describes your weekly activity level?',
+    id: 'q2',
+    sectionTitle: 'SECTION 1 — 18 (Intermittent Fasting)',
+    sectionSubtitle: 'Goal: Assess eating window & discipline',
+    title: 'Q2. Do you often snack late at night?',
     type: 'single',
     options: [
-      { value: 'sedentary', label: 'Mostly sitting', icon: '🪑' },
-      { value: 'light', label: 'Light movement 1-2x a week', icon: '🚶' },
-      { value: 'moderate', label: 'Workouts 3-4x a week', icon: '🏋️' },
-      { value: 'active', label: 'On my feet or training daily', icon: '⚡' }
+      { value: 'a', label: 'A. Never — I stop eating early', icon: '🌙', score: 3 },
+      { value: 'b', label: 'B. Sometimes, especially on weekends', icon: '🌜', score: 2 },
+      { value: 'c', label: 'C. Yes, most nights', icon: '🦉', score: 1 }
     ]
   },
   {
-    id: 'veggies',
-    title: 'How often do you eat veggies?',
+    id: 'q3',
+    sectionTitle: 'SECTION 1 — 18 (Intermittent Fasting)',
+    sectionSubtitle: 'Goal: Assess eating window & discipline',
+    title: 'Q3. How do you usually break your fast?',
     type: 'single',
     options: [
-      { value: 'rarely', label: 'I don’t really eat veggies', icon: '🍟' },
-      { value: 'sometimes', label: 'I eat veggies from time to time', icon: '🥗' },
-      { value: 'daily', label: 'I eat veggies every day', icon: '🥦' },
-      { value: 'mostly', label: 'I eat mostly veggies', icon: '🥬' }
+      { value: 'a', label: 'A. With protein and whole foods', icon: '🍳', score: 3 },
+      { value: 'b', label: 'B. With carbs or coffee', icon: '☕', score: 2 },
+      { value: 'c', label: 'C. I skip breakfast completely or eat randomly', icon: '🎲', score: 1 }
     ]
   },
   {
-    id: 'sleep',
-    title: 'How would you describe your sleep quality?',
+    id: 'q4',
+    sectionTitle: 'SECTION 2 — 10 (10,000 Steps Daily)',
+    sectionSubtitle: 'Goal: Check movement & daily activity',
+    title: 'Q4. On average, how active are you during a normal day?',
     type: 'single',
     options: [
-      { value: 'restless', label: 'Restless & interrupted', icon: '🌙' },
-      { value: 'okay', label: 'Okay, but not great', icon: '😴' },
-      { value: 'solid', label: 'Pretty solid most nights', icon: '💤' },
-      { value: 'excellent', label: 'Excellent, I wake up energized', icon: '🌅' }
+      { value: 'a', label: 'A. I walk or move frequently — 8k–10k+ steps', icon: '🚶‍♂️', score: 3 },
+      { value: 'b', label: 'B. Moderate activity — 5k–7k steps', icon: '🚶', score: 2 },
+      { value: 'c', label: 'C. Mostly sedentary — under 3k steps', icon: '🛋️', score: 1 }
     ]
   },
   {
-    id: 'hydration',
-    title: 'How many cups of water do you drink in a day?',
+    id: 'q5',
+    sectionTitle: 'SECTION 2 — 10 (10,000 Steps Daily)',
+    sectionSubtitle: 'Goal: Check movement & daily activity',
+    title: 'Q5. How do you make sure you stay active?',
     type: 'single',
     options: [
-      { value: 'under-4', label: 'Under 4 cups', icon: '🥤' },
-      { value: 'four-to-six', label: '4-6 cups', icon: '💧' },
-      { value: 'seven-to-nine', label: '7-9 cups', icon: '🚰' },
-      { value: 'ten-plus', label: '10+ cups', icon: '🏞️' }
+      { value: 'a', label: 'A. I track steps or have a daily walking routine', icon: '📱', score: 3 },
+      { value: 'b', label: 'B. I move when possible but don’t track', icon: '🧭', score: 2 },
+      { value: 'c', label: 'C. I sit most of the day and rarely plan walks', icon: '💺', score: 1 }
     ]
   },
   {
-    id: 'cravings',
-    title: 'What cravings tend to derail you?',
-    type: 'multi',
+    id: 'q6',
+    sectionTitle: 'SECTION 2 — 10 (10,000 Steps Daily)',
+    sectionSubtitle: 'Goal: Check movement & daily activity',
+    title: 'Q6. Which statement fits you best?',
+    type: 'single',
     options: [
-      { value: 'sugar', label: 'Sugary treats', icon: '🍰' },
-      { value: 'salty', label: 'Salty snacks', icon: '🥨' },
-      { value: 'late-night', label: 'Late-night munchies', icon: '🌜' },
-      { value: 'comfort', label: 'Comfort foods / takeout', icon: '🍕' },
-      { value: 'none', label: 'Cravings rarely throw me off', icon: '✨' }
+      { value: 'a', label: 'A. Exercise gives me energy', icon: '⚡', score: 3 },
+      { value: 'b', label: 'B. I try but struggle to stay consistent', icon: '♻️', score: 2 },
+      { value: 'c', label: 'C. I feel tired even before moving', icon: '😴', score: 1 }
     ]
   },
   {
-    id: 'goals',
-    title: 'What are your goals?',
-    type: 'multi',
+    id: 'q7',
+    sectionTitle: 'SECTION 3 — 8 (Quality Sleep)',
+    sectionSubtitle: 'Goal: Evaluate sleep habits',
+    title: 'Q7. How many hours of sleep do you get on average?',
+    type: 'single',
     options: [
-      { value: 'lose-weight', label: 'Losing weight', icon: '⚖️' },
-      { value: 'overall-health', label: 'Improving my overall health', icon: '💪' },
-      { value: 'gut-health', label: 'Improving my gut health', icon: '🦠' }
+      { value: 'a', label: 'A. 8+ hours, good quality sleep', icon: '🛌', score: 3 },
+      { value: 'b', label: 'B. 6–7 hours, okay quality', icon: '⏰', score: 2 },
+      { value: 'c', label: 'C. Less than 6 hours or poor quality', icon: '😵‍💫', score: 1 }
+    ]
+  },
+  {
+    id: 'q8',
+    sectionTitle: 'SECTION 3 — 8 (Quality Sleep)',
+    sectionSubtitle: 'Goal: Evaluate sleep habits',
+    title: 'Q8. What best describes your bedtime routine?',
+    type: 'single',
+    options: [
+      { value: 'a', label: 'A. Consistent bedtime, no screens before bed', icon: '📵', score: 3 },
+      { value: 'b', label: 'B. I try to sleep early but get distracted', icon: '📺', score: 2 },
+      { value: 'c', label: 'C. I scroll or watch TV until I fall asleep', icon: '📱', score: 1 }
+    ]
+  },
+  {
+    id: 'q9',
+    sectionTitle: 'SECTION 3 — 8 (Quality Sleep)',
+    sectionSubtitle: 'Goal: Evaluate sleep habits',
+    title: 'Q9. Do you wake up feeling rested and focused?',
+    type: 'single',
+    options: [
+      { value: 'a', label: 'A. Almost always', icon: '🌞', score: 3 },
+      { value: 'b', label: 'B. Sometimes', icon: '🌤️', score: 2 },
+      { value: 'c', label: 'C. Rarely', icon: '🌧️', score: 1 }
+    ]
+  },
+  {
+    id: 'q10',
+    sectionTitle: 'SECTION 4 — 4 (Hydration)',
+    sectionSubtitle: 'Goal: Measure hydration & toxin elimination',
+    title: 'Q10. How much water or herbal tea do you drink daily?',
+    type: 'single',
+    options: [
+      { value: 'a', label: 'A. 4+ liters', icon: '💧', score: 3 },
+      { value: 'b', label: 'B. Around 2–3 liters', icon: '🥤', score: 2 },
+      { value: 'c', label: 'C. Less than 2 liters', icon: '🌵', score: 1 }
+    ]
+  },
+  {
+    id: 'q11',
+    sectionTitle: 'SECTION 4 — 4 (Hydration)',
+    sectionSubtitle: 'Goal: Measure hydration & toxin elimination',
+    title: 'Q11. How do you remind yourself to stay hydrated?',
+    type: 'single',
+    options: [
+      { value: 'a', label: 'A. I track or carry a bottle everywhere', icon: '🧊', score: 3 },
+      { value: 'b', label: 'B. I drink when thirsty', icon: '🚰', score: 2 },
+      { value: 'c', label: 'C. I forget often', icon: '💤', score: 1 }
+    ]
+  },
+  {
+    id: 'q12',
+    sectionTitle: 'SECTION 4 — 4 (Hydration)',
+    sectionSubtitle: 'Goal: Measure hydration & toxin elimination',
+    title: 'Q12. How clear is your urine most of the day?',
+    type: 'single',
+    options: [
+      { value: 'a', label: 'A. Clear / light yellow', icon: '✨', score: 3 },
+      { value: 'b', label: 'B. Medium yellow', icon: '🌼', score: 2 },
+      { value: 'c', label: 'C. Dark yellow or cloudy', icon: '🌑', score: 1 }
+    ]
+  },
+  {
+    id: 'q13',
+    sectionTitle: 'SECTION 5 — 1 (Protein Intake)',
+    sectionSubtitle: 'Goal: Assess nutrition and muscle maintenance',
+    title: 'Q13. How often do you include protein in meals?',
+    type: 'single',
+    options: [
+      { value: 'a', label: 'A. Every meal', icon: '🥗', score: 3 },
+      { value: 'b', label: 'B. 1–2 meals per day', icon: '🍽️', score: 2 },
+      { value: 'c', label: 'C. Rarely or inconsistently', icon: '🍩', score: 1 }
+    ]
+  },
+  {
+    id: 'q14',
+    sectionTitle: 'SECTION 5 — 1 (Protein Intake)',
+    sectionSubtitle: 'Goal: Assess nutrition and muscle maintenance',
+    title: 'Q14. Do you know how much protein you need daily (1g per kg body weight)?',
+    type: 'single',
+    options: [
+      { value: 'a', label: 'A. Yes, and I track it', icon: '📊', score: 3 },
+      { value: 'b', label: 'B. I roughly estimate', icon: '📝', score: 2 },
+      { value: 'c', label: 'C. No idea / never tracked', icon: '❓', score: 1 }
+    ]
+  },
+  {
+    id: 'q15',
+    sectionTitle: 'SECTION 5 — 1 (Protein Intake)',
+    sectionSubtitle: 'Goal: Assess nutrition and muscle maintenance',
+    title: 'Q15. What are your main protein sources?',
+    type: 'single',
+    options: [
+      { value: 'a', label: 'A. Lean meat, eggs, tofu, legumes', icon: '🍗', score: 3 },
+      { value: 'b', label: 'B. Occasional meats or shakes', icon: '🥤', score: 2 },
+      { value: 'c', label: 'C. Mostly carbs or processed food', icon: '🍟', score: 1 }
     ]
   }
 ];

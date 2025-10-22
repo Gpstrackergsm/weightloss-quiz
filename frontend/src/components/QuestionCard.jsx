@@ -18,9 +18,16 @@ export default function QuestionCard({ step, answer, onSelect }) {
       transition={{ duration: 0.4 }}
       className="flex flex-col gap-6 rounded-3xl bg-white/10 p-8 backdrop-blur-lg shadow-xl"
     >
-      <div>
-        <span className="text-sm uppercase tracking-[0.3em] text-white/60">Question</span>
-        <h2 className="mt-2 text-2xl font-semibold text-white">{step.title}</h2>
+      <div className="space-y-2">
+        {step.sectionTitle && (
+          <div className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+            {step.sectionTitle}
+          </div>
+        )}
+        {step.sectionSubtitle && (
+          <div className="text-sm text-white/70">{step.sectionSubtitle}</div>
+        )}
+        <h2 className="text-2xl font-semibold text-white">{step.title}</h2>
       </div>
       <div className="flex flex-col gap-3">
         {step.options.map((option) => {
