@@ -97,8 +97,8 @@ export default function LandingSection({ onStart }) {
             transition={{ delay: 0.1, duration: 0.6 }}
             className="flex-1"
           >
-            <div className="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur">
-              <div className="rounded-3xl border border-white/10 bg-black/20 p-6">
+            <div className="rounded-[2.5rem] border border-white/10 bg-white/5 py-8 px-0 shadow-2xl backdrop-blur sm:px-8">
+              <div className="rounded-3xl border border-white/10 bg-black/20 py-6 px-0 sm:px-6">
                 <p className="text-xs uppercase tracking-[0.35em] text-emerald-200/80">What&apos;s inside</p>
                 <h2 className="mt-4 text-2xl font-semibold text-white">Your metabolic alignment blueprint</h2>
                 <p className="mt-4 text-sm leading-relaxed text-white/70">
