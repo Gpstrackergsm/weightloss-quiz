@@ -7,14 +7,14 @@ import { quizSteps } from './data/questions.js';
 import { useQuizNavigation } from './hooks/useQuizNavigation.js';
 
 export default function App() {
-  const { currentStep, isComplete, progress, answers, updateAnswer, goNext, goBack } = useQuizNavigation();
+  const { currentStep, isComplete, progress, answers, updateAnswer, goNext, goBack, resetQuiz } = useQuizNavigation();
 
   if (currentStep < 0) {
     return <LandingSection onStart={goNext} />;
   }
 
   if (isComplete) {
-    return <ResultSection answers={answers} />;
+    return <ResultSection answers={answers} onRestart={resetQuiz} />;
   }
 
   const step = quizSteps[currentStep];

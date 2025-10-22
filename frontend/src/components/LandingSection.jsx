@@ -9,11 +9,14 @@ export default function LandingSection({ onStart }) {
         transition={{ duration: 0.6 }}
         className="max-w-2xl rounded-3xl bg-white/10 p-10 text-center shadow-2xl backdrop-blur-lg"
       >
-        <span className="text-sm uppercase tracking-[0.3em] text-white/60">Bioma Style Quiz</span>
+        <span className="text-sm uppercase tracking-[0.3em] text-white/60">Metabolic Reset Quiz</span>
         <h1 className="mt-4 text-4xl font-semibold text-white md:text-5xl">
-          Discover Your Personalized Weight-Loss Strategy
+          Are You Ready for the 18-10-8-4-1 Challenge?
         </h1>
-        <p className="mt-4 text-lg text-white/80">Takes under 2 minutes · No email required</p>
+        <p className="mt-4 text-lg text-white/80">
+          Discover how aligned your daily habits are with the viral 21-day metabolic reset formula.
+        </p>
+        <p className="mt-3 text-sm uppercase tracking-[0.25em] text-white/60">15 questions · under 3 minutes</p>
         <button
           onClick={onStart}
           className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-lg font-semibold text-brand transition hover:bg-white/80"
