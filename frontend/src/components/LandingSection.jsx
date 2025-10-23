@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { trackEvent } from '../utils/analytics.js';
 
 const highlights = [
   {
@@ -22,6 +23,11 @@ const checkpoints = [
 ];
 
 export default function LandingSection({ onStart }) {
+  const handleStart = (source) => {
+    trackEvent('quiz_start_cta', { source });
+    onStart();
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#0A1416] via-[#1F3A3C] to-[#355756] text-white">
       <div className="pointer-events-none absolute inset-0">
@@ -41,7 +47,7 @@ export default function LandingSection({ onStart }) {
           </div>
           <button
             type="button"
-            onClick={onStart}
+            onClick={() => handleStart('header')}
             className="hidden rounded-full border border-white/30 px-6 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition hover:border-white/60 hover:bg-white/10 md:inline-flex"
           >
             Start quiz
@@ -83,7 +89,7 @@ export default function LandingSection({ onStart }) {
             </div>
             <button
               type="button"
-              onClick={onStart}
+              onClick={() => handleStart('hero')}
               className="mt-12 inline-flex items-center justify-center rounded-full bg-white px-10 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-brand transition hover:bg-white/80"
             >
               Start quiz now
