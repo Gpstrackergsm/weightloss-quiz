@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { quizSteps } from '../data/questions.js';
+import { trackEvent } from '../utils/analytics.js';
 
 const LEVELS = [
   {
@@ -86,6 +87,28 @@ export default function ResultSection({ answers, onRestart }) {
     'Hydration, movement & recovery trackers that keep you accountable'
   ];
 
+  useEffect(() => {
+    trackEvent('quiz_result_view', {
+      score_total: total,
+      score_max: max,
+      percentage,
+      level: level.title
+    });
+  }, [level.title, max, percentage, total]);
+
+  const handlePlanClick = (placement) => () => {
+    trackEvent('quiz_plan_cta_click', {
+      placement,
+      level: level.title,
+      percentage
+    });
+  };
+
+  const handleRestart = () => {
+    trackEvent('quiz_restart', { level: level.title, percentage });
+    onRestart?.();
+  };
+
   return (
     <div className="flex min-h-screen items-center justify-center px-4 py-8 sm:px-6">
       <motion.div
@@ -125,6 +148,7 @@ export default function ResultSection({ answers, onRestart }) {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              onClick={handlePlanClick('primary_top')}
               className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#FF7043] px-5 py-3 text-base font-semibold uppercase tracking-[0.25em] text-white shadow-[0_20px_40px_rgba(255,112,67,0.35)] transition duration-200 hover:bg-[#FF5722] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7043]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1C1F] sm:w-auto sm:px-6 sm:py-4 sm:text-lg sm:tracking-[0.4em]"
             >
               Get My Plan &amp; Start Today
@@ -217,6 +241,7 @@ export default function ResultSection({ answers, onRestart }) {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              onClick={handlePlanClick('primary_bottom')}
               className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#FF7043] via-[#FF8A50] to-[#FFB792] px-5 py-3 text-base font-semibold uppercase tracking-[0.25em] text-[#2A0B02] shadow-[0_20px_60px_rgba(255,112,67,0.45)] transition duration-200 hover:from-[#FF5722] hover:via-[#FF7043] hover:to-[#FFAB91] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7043]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1C1F] sm:w-auto sm:px-6 sm:py-4 sm:text-lg sm:tracking-[0.4em]"
             >
               Get My Full Personalized Plan →
@@ -228,7 +253,7 @@ export default function ResultSection({ answers, onRestart }) {
               {onRestart && (
                 <button
                   type="button"
-                  onClick={onRestart}
+                  onClick={handleRestart}
                   className="rounded-full border border-white/40 px-5 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-white transition hover:border-white/80 hover:bg-white/10 sm:tracking-[0.3em]"
                 >
                   Retake Quiz
