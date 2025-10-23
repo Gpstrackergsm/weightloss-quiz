@@ -4,6 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bioma Style Weight Loss Quiz</title>
+    <!-- Google tag (gtag.js) -->
+    <script type="module">
+      const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-EP3PKS5BE0';
+      if (!measurementId) {
+        console.warn('Google Analytics measurement ID is not defined.');
+      } else {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', measurementId, { send_page_view: false });
+      }
+    </script>
   </head>
   <body class="bg-brand text-white">
     <div id="root"></div>

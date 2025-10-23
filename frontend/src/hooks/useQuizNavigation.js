@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { quizSteps } from '../data/questions.js';
+import { trackEvent } from '../utils/analytics.js';
 
 export function useQuizNavigation() {
   const [currentStep, setCurrentStep] = useState(-1);
@@ -15,32 +16,85 @@ export function useQuizNavigation() {
     setAnswers((prev) => {
       if (type === 'multi') {
         const existing = new Set(prev[stepId] || []);
+        let action = 'select';
+
         if (existing.has(value)) {
           existing.delete(value);
+          action = 'deselect';
         } else {
           if (value === 'none') {
-            return { ...prev, [stepId]: ['none'] };
+            existing.clear();
+            existing.add('none');
+          } else {
+            existing.delete('none');
+            existing.add(value);
           }
-          existing.delete('none');
-          existing.add(value);
         }
-        return { ...prev, [stepId]: Array.from(existing) };
+
+        const selection = Array.from(existing);
+        trackEvent('quiz_answer', {
+          step_id: stepId,
+          question_type: type,
+          value,
+          action,
+          selection: selection.join('|')
+        });
+
+        return { ...prev, [stepId]: selection };
       }
+
+      trackEvent('quiz_answer', {
+        step_id: stepId,
+        question_type: type,
+        value,
+        action: 'select'
+      });
+
       return { ...prev, [stepId]: value };
     });
   };
 
   const goNext = () => {
-    setCurrentStep((prev) => Math.min(prev + 1, quizSteps.length));
+    setCurrentStep((prev) => {
+      const next = Math.min(prev + 1, quizSteps.length);
+
+      if (next !== prev) {
+        if (prev === -1) {
+          trackEvent('quiz_started', { step_id: quizSteps[0]?.id });
+        } else if (next === quizSteps.length) {
+          trackEvent('quiz_completed', { total_steps: quizSteps.length });
+        } else {
+          trackEvent('quiz_step_advance', {
+            step_id: quizSteps[next]?.id,
+            step_index: next + 1,
+            total_steps: quizSteps.length
+          });
+        }
+      }
+
+      return next;
+    });
   };
 
   const goBack = () => {
-    setCurrentStep((prev) => Math.max(prev - 1, -1));
+    setCurrentStep((prev) => {
+      const next = Math.max(prev - 1, -1);
+
+      if (next !== prev) {
+        trackEvent('quiz_step_back', {
+          step_id: next >= 0 ? quizSteps[next]?.id : 'landing',
+          step_index: next + 1
+        });
+      }
+
+      return next;
+    });
   };
 
   const resetQuiz = () => {
     setCurrentStep(-1);
     setAnswers({});
+    trackEvent('quiz_reset');
   };
 
   return {

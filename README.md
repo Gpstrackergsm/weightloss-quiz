@@ -24,9 +24,12 @@ PDF API in production:
 
 ```bash
 VITE_API_BASE_URL=https://your-backend-host.com/api
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
 > The trailing `/api` portion is optional if your backend exposes the route at the root level.
+
+Set `VITE_GA_MEASUREMENT_ID` to the Google Analytics 4 measurement ID shown in your Analytics property (for example, `G-ABCDE12345`). This enables page view and quiz event tracking via GA4. If you leave it unset, the shared tracking property `G-EP3PKS5BE0` will be used.
 
 The Vite dev server proxies `/api/*` requests to `http://localhost:5000` during development, so you can skip setting the variable
 locally if you run both services from this repository.
