@@ -1,5 +1,3 @@
-const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-EP3PKS5BE0';
-
 function getGtag() {
   if (typeof window === 'undefined') {
     return null;
@@ -27,11 +25,11 @@ export function trackEvent(eventName, params = {}) {
 export function trackPageView(path) {
   const gtag = getGtag();
 
-  if (!gtag || !GA_MEASUREMENT_ID) {
+  if (!gtag) {
     return;
   }
 
-  gtag('config', GA_MEASUREMENT_ID, {
+  gtag('event', 'page_view', {
     page_path: path,
   });
 }
