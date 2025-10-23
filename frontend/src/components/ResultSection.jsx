@@ -203,36 +203,12 @@ export default function ResultSection({ answers, onRestart }) {
             </div>
           </div>
 
-          <div className="grid gap-6 rounded-3xl border border-white/10 bg-white/5 p-6 text-left sm:grid-cols-[1.3fr_1fr] sm:items-center sm:p-8">
-            <div className="space-y-3">
-              <p className="text-base font-semibold text-white">Keep momentum even if you’re not ready to invest today</p>
-              <p className="text-sm text-white/75">
-                Drop your email and we’ll hold your personalized roadmap plus send a bonus “First 72 Hours” checklist so you never lose your score advantage.
-              </p>
-            </div>
-            <form className="flex flex-col gap-3 sm:flex-row">
-              <input
-                type="email"
-                name="planEmail"
-                placeholder="Email me my plan link"
-                className="w-full rounded-full border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-teal-200 focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center rounded-full bg-teal-400/90 px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#032224] transition hover:bg-teal-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-200/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1C1F]"
-              >
-                Save My Plan
-              </button>
-            </form>
-            <p className="text-[0.65rem] text-white/50">We respect inboxes. You’ll only receive your personalized plan and challenge reminders.</p>
-          </div>
-
           <div className="space-y-6 text-left sm:text-center">
             <div className="space-y-3 text-sm text-white/75">
               <p>
                 Activate your 21-day sequence now and wake up tomorrow with a guided calendar telling you exactly when to fast, fuel, hydrate, and reset.
               </p>
-              <p className="text-xs uppercase tracking-[0.3em] text-white/60">One-time $9 • Yours for life</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-white/60">One-time $17 • Yours for life</p>
             </div>
 
             <motion.a
