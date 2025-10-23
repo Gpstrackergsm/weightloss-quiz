@@ -1,10 +1,12 @@
+const DEV = import.meta.env?.DEV;
+
 function getGtag() {
   if (typeof window === 'undefined') {
     return null;
   }
 
   if (typeof window.gtag !== 'function') {
-    if (import.meta.env.DEV) {
+    if (DEV) {
       console.warn('Google Analytics has not been loaded. Skipping event.');
     }
     return null;
@@ -29,7 +31,10 @@ export function trackPageView(path) {
     return;
   }
 
+  const pagePath =
+    path || (typeof window !== 'undefined' ? `${window.location.pathname}${window.location.search}` : undefined);
+
   gtag('event', 'page_view', {
-    page_path: path,
+    page_path: pagePath,
   });
 }

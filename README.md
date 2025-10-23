@@ -27,7 +27,7 @@ VITE_API_BASE_URL=https://your-backend-host.com/api
 
 > The trailing `/api` portion is optional if your backend exposes the route at the root level.
 
-Google Analytics 4 tracking is preconfigured with the shared measurement ID `G-EP3PKS5BE0`. If you need to point events to your own GA4 property, replace the snippet in `frontend/index.html` with the ID from your Analytics account.
+Google Analytics 4 tracking is preconfigured with the shared measurement ID `G-EP3PKS5BE0`. To point events to a different GA4 property, set `VITE_GA_MEASUREMENT_ID` in your environment configuration—if the variable is omitted or left blank, the shared property is used automatically.
 
 The Vite dev server proxies `/api/*` requests to `http://localhost:5000` during development, so you can skip setting the variable locally if you run both services from this repository.
 
