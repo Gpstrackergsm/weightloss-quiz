@@ -5,13 +5,13 @@ import { trackEvent } from '../utils/analytics.js';
 
 const LEVELS = [
   {
-    min: 35,
+    min: 12,
     title: 'Metabolism Master',
     badge: '🟢',
     message: 'You’re fully aligned with the 18-10-8-4-1 principles. Your metabolism thrives on balance and consistency.'
   },
   {
-    min: 25,
+    min: 8,
     title: 'Balanced Beginner',
     badge: '🟡',
     message: 'You’re doing many things right — small adjustments in fasting or sleep will speed up results.'
