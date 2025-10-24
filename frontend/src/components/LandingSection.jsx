@@ -48,7 +48,7 @@ export default function LandingSection({ onStart }) {
           <button
             type="button"
             onClick={() => handleStart('header')}
-            className="hidden rounded-full border border-white/30 px-6 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition hover:border-white/60 hover:bg-white/10 md:inline-flex"
+            className="hidden rounded-full bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-400 px-6 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#041F1C] shadow-lg shadow-emerald-500/30 transition hover:from-emerald-200 hover:via-emerald-300 hover:to-teal-300 md:inline-flex"
           >
             Start quiz
           </button>
@@ -90,7 +90,7 @@ export default function LandingSection({ onStart }) {
             <button
               type="button"
               onClick={() => handleStart('hero')}
-              className="mt-12 inline-flex items-center justify-center rounded-full bg-white px-10 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-brand transition hover:bg-white/80"
+              className="mt-12 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-400 px-10 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-[#041F1C] shadow-xl shadow-emerald-500/30 transition hover:from-emerald-200 hover:via-emerald-300 hover:to-teal-300"
             >
               Start quiz now
             </button>
