@@ -152,7 +152,7 @@ export default function ResultSection({ answers, onRestart }) {
               className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#FF7043] px-5 py-3 text-base font-semibold uppercase tracking-[0.25em] text-white shadow-[0_20px_40px_rgba(255,112,67,0.35)] transition duration-200 hover:bg-[#FF5722] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7043]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1C1F] sm:w-auto sm:px-6 sm:py-4 sm:text-lg sm:tracking-[0.4em]"
             >
               Get My Plan &amp; Start Today
-              <span className="text-[0.65rem] font-normal tracking-[0.2em] text-white/80 sm:text-xs">$9 lifetime access</span>
+              <span className="text-[0.65rem] font-normal tracking-[0.2em] text-white/80 sm:text-xs">Instant lifetime access</span>
             </motion.a>
             <p className="text-[0.65rem] font-medium uppercase tracking-[0.25em] text-white/50 sm:text-xs sm:tracking-[0.35em]">
               Science-based • Instant Access • 7,000+ plans delivered
@@ -190,7 +190,7 @@ export default function ResultSection({ answers, onRestart }) {
                   You’re in the top readiness tier—your plan doubles down on stacking consistent wins.
                 </div>
               )}
-              <p className="text-[0.65rem] text-white/60 sm:text-xs">Plan updates adapt with you—no recurring fees.</p>
+              <p className="text-[0.65rem] text-white/60 sm:text-xs">Plan updates adapt with you—stay supported as you grow.</p>
             </div>
 
             <div className="space-y-6 rounded-2xl border border-white/10 bg-[#082024]/70 p-5 sm:p-6">
@@ -232,7 +232,7 @@ export default function ResultSection({ answers, onRestart }) {
               <p>
                 Activate your 21-day sequence now and wake up tomorrow with a guided calendar telling you exactly when to fast, fuel, hydrate, and reset.
               </p>
-              <p className="text-[0.7rem] uppercase tracking-[0.25em] text-white/60 sm:text-xs sm:tracking-[0.3em]">One-time $17 • Yours for life</p>
+              <p className="text-[0.7rem] uppercase tracking-[0.25em] text-white/60 sm:text-xs sm:tracking-[0.3em]">One-time unlock • Yours for life</p>
             </div>
 
             <motion.a
@@ -249,7 +249,7 @@ export default function ResultSection({ answers, onRestart }) {
             </motion.a>
 
             <div className="flex flex-col items-center justify-between gap-4 text-[0.7rem] uppercase tracking-[0.25em] text-white/50 sm:flex-row sm:text-xs sm:tracking-[0.3em]">
-              <span className="text-center sm:text-left">Instant download • No subscriptions • Cancel anytime before charge</span>
+              <span className="text-center sm:text-left">Instant download • Flexible access • Adjust anytime</span>
               {onRestart && (
                 <button
                   type="button"
